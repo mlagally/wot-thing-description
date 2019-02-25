@@ -23,14 +23,24 @@
 """
 <p>
      <span class=\"rfc2119-assertion\" id=\"td-context-ns-thing-mandatory\">The mandatory
-     context definition <code>"http://www.w3.org/ns/td"</code> MUST be the first item in 
-     the JSON-LD context array <code>@context</code>.</span>
+     context definition of the string <code>"http://www.w3.org/ns/td"</code> MUST be 
+     the first item in the <code>@context</code> array.</span>
      <span class=\"rfc2119-assertion\" id=\"td-context-ns-thing-optional\">The mandatory
-     context definition MAY be followed by one or more local namespaces.</span>
+     context definition MAY be followed by one or more context definitions as strings or 
+     objects.</span>
 </p>
 <p>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-thing-dereferenceable-url\">
+     As suggested in JSON-LD [[!json-ld]] specification, if a context definition is 
+     a string, it SHOULD be a dereferenceable URL.
+     </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-thing-map-of-namespaces\">
+     Likewise, if a context definition is an object, it SHOULD be a map of namespaces, 
+     in which keys are namespace prefixes. 
+     </span>
      <span class=\"rfc2119-assertion\" id=\"td-context-ns-thing-prefix\">Each optional
-     namespace specifed for a Thing context MUST be bound to an unique prefix.</span>
+     namespace specified in the <code>@context</code> array of a Thing MUST be bound 
+     to an unique prefix.</span>
 </p>
 <p id="meta-interactions-of-thing">Similar to <a href="#propertyaffordance" class="sec-ref">PropertyAffordance</a>, 
     <a href="#actionaffordance" class="sec-ref">ActionAffordance</a> and 
@@ -64,77 +74,83 @@
         sh:order "1"^^xsd:integer ;
     ] ;
     sh:property [
-        sh:path td:description ;
+        sh:path td:names ;
+        sh:minCount 1 ;
         sh:datatype xsd:string ;
         sh:order "2"^^xsd:integer ;
     ] ;
     sh:property [
+        sh:path td:description ;
+        sh:datatype xsd:string ;
+        sh:order "3"^^xsd:integer ;
+    ] ;
+    sh:property [
         sh:path td:descriptions ;
         sh:class td:MultiLanguage ;
-        sh:order "3"^^xsd:integer ;
+        sh:order "4"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:version ;
         sh:class td:VersionInfo ;
-        sh:order "4"^^xsd:integer ;
+        sh:order "5"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:created ;
         sh:datatype xsd:string ;
-        sh:order "5"^^xsd:integer ;
+        sh:order "6"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:lastModified ;
         sh:datatype xsd:string ;
-        sh:order "6"^^xsd:integer ;
+        sh:order "7"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:support ;
         sh:datatype xsd:string ;
-        sh:order "7"^^xsd:integer ;
+        sh:order "8"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:base ;
         sh:datatype xsd:anyURI ;
-        sh:order "8"^^xsd:integer ;
+        sh:order "9"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:properties ;
         sh:class td:PropertyAffordance ;
-        sh:order "9"^^xsd:integer ;
+        sh:order "10"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:actions ;
         sh:class td:ActionAffordance ;
-        sh:order "10"^^xsd:integer ;
+        sh:order "11"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:events ;
         sh:class td:EventAffordance ;
-        sh:order "11"^^xsd:integer ;
+        sh:order "12"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:links ;
         sh:class td:Link ;
-        sh:order "12"^^xsd:integer ;
+        sh:order "13"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:forms ;
         sh:class td:Form ;
-        sh:order "13"^^xsd:integer ;
+        sh:order "14"^^xsd:integer ;
     ] ;
     sh:property [
         sh:path td:security ;
         sh:minCount 1 ;
 #       sh:class wotsec:SecurityScheme ;
         sh:datatype xsd:string ;
-        sh:order "14"^^xsd:integer ;
+        sh:order "15"^^xsd:integer ;
     ] ;
     sh:property [	
         sh:path td:securityDefinitions ;	
         sh:minCount 1 ;
         sh:class wotsec:SecurityScheme ;	
-        sh:order "15"^^xsd:integer ;
+        sh:order "16"^^xsd:integer ;
     ].
     
 :InteractionAffordanceShape a sh:NodeShape ;
@@ -420,15 +436,25 @@ when the texts are served as a result such negotiation.
     sh:description
 """
 <p>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-securityscheme-mandatory\">The mandatory
+     context definition of the string <code>"http://www.w3.org/ns/wot-security"</code> MUST be 
+     the first item in the <code>@context</code> array.</span>
      <span class=\"rfc2119-assertion\" id=\"td-context-ns-securityscheme-optional\">The mandatory
-     context definition <code>"http://www.w3.org/ns/wot-security"</code> MAY be followed by one or
-     more local namespaces.</span>
+     context definition MAY be followed by one or more context definitions as strings or 
+     objects.</span>
 </p>
 <p>
-    <span class="rfc2119-assertion" id="td-context-ns-securityscheme-prefix">
-        Each optional namespace specified for a SecurityScheme context MUST be bound
-        to an unique prefix.
-    </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-securityscheme-dereferenceable-url\">
+     As suggested in JSON-LD [[!json-ld]] specification, if a context definition is 
+     a string, it SHOULD be a dereferenceable URL.
+     </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-securityscheme-map-of-namespaces\">
+     Likewise, if a context definition is an object, it SHOULD be a map of namespaces, 
+     in which keys are namespace prefixes. 
+     </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-securityscheme-prefix\">Each optional
+     namespace specified in the <code>@context</code> array of a SecurityScheme MUST be bound 
+     to an unique prefix.</span>
 </p>
 """^^rdf:HTML ;
     sh:property [
@@ -651,15 +677,25 @@ when the texts are served as a result such negotiation.
     sh:description
 """
 <p>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-dataschema-mandatory\">The mandatory
+     context definition of the string <code>"http://www.w3.org/ns/json-schema"</code> MUST be 
+     the first item in the <code>@context</code> array.</span>
      <span class=\"rfc2119-assertion\" id=\"td-context-ns-dataschema-optional\">The mandatory
-     context definition <code>"http://www.w3.org/ns/json-schema"</code> MAY be followed by one or
-     more local namespaces.</span>
+     context definition MAY be followed by one or more context definitions as strings or 
+     objects.</span>
 </p>
 <p>
-    <span class="rfc2119-assertion" id="td-context-ns-dataschema-prefix">
-        Each optional namespace specified for a DataSchema context MUST be bound
-        to an unique prefix.
-    </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-dataschema-dereferenceable-url\">
+     As suggested in JSON-LD [[!json-ld]] specification, if a context definition is 
+     a string, it SHOULD be a dereferenceable URL.
+     </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-dataschema-map-of-namespaces\">
+     Likewise, if a context definition is an object, it SHOULD be a map of namespaces, 
+     in which keys are namespace prefixes. 
+     </span>
+     <span class=\"rfc2119-assertion\" id=\"td-context-ns-dataschema-prefix\">Each optional
+     namespace specified in the <code>@context</code> array of a DataSchema MUST be bound 
+     to an unique prefix.</span>
 </p>
 """^^rdf:HTML ;
     sh:property [
