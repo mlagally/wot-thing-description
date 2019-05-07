@@ -1,40 +1,43 @@
 {
   "@context": {
+    "td": "https://www.w3.org/2019/td#",
+    "jsonschema": "https://www.w3.org/2019/json-schema#",
+    "wotsec": "https://www.w3.org/2019/wot-security#",
+    "lnk": "https://www.w3.org/2019/web-linking#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "wotsec": "http://w3.org/ns/wot-security#",
     "in": {
-      "@id": "http://www.w3.org/ns/wot-security#in"
+      "@id": "wotsec:in"
     },
     "authorization": {
-      "@id": "http://www.w3.org/ns/wot-security#authorization"
+      "@id": "wotsec:authorization"
     },
     "token": {
-      "@id": "http://www.w3.org/ns/wot-security#token"
+      "@id": "wotsec:token"
     },
     "refresh": {
-      "@id": "http://www.w3.org/ns/wot-security#refresh"
+      "@id": "wotsec:refresh"
     },
     "proxy": {
-      "@id": "http://www.w3.org/ns/wot-security#proxy"
+      "@id": "wotsec:proxy"
     },
     "scopes": {
-      "@id": "http://www.w3.org/ns/wot-security#scopes",
+      "@id": "wotsec:scopes",
       "@container": "@set"
     },
     "flow": {
-      "@id": "http://www.w3.org/ns/wot-security#flow"
+      "@id": "wotsec:flow"
     },
     "qop": {
-      "@id": "http://www.w3.org/ns/wot-security#qop"
+      "@id": "wotsec:qop"
     },
     "alg": {
-      "@id": "http://www.w3.org/ns/wot-security#alg"
+      "@id": "wotsec:alg"
     },
     "format": {
-      "@id": "http://www.w3.org/ns/wot-security#format"
+      "@id": "wotsec:format"
     },
     "identity": {
-      "@id": "http://www.w3.org/ns/wot-security#identity"
+      "@id": "wotsec:identity"
     },
     "scheme": {
       "@id": "rdf:type",
